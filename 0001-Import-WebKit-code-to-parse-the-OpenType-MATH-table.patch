@@ -1,4 +1,4 @@
-From 6f39fd17cad6c48abde7d67b40cb64169c9d01bc Mon Sep 17 00:00:00 2001
+From 25a5024495831e523a53f9d20f15e821680097f7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Wang?= <fred.wang@free.fr>
 Date: Wed, 30 Mar 2016 09:01:11 +0200
 Subject: [PATCH] Import WebKit code to parse the OpenType MATH table.
@@ -27,7 +27,7 @@ index 5362f83..a87d72c 100644
        'fonts/opentype/OpenTypeTypes.h',
 diff --git a/third_party/WebKit/Source/platform/fonts/opentype/OpenTypeMathData.cpp b/third_party/WebKit/Source/platform/fonts/opentype/OpenTypeMathData.cpp
 new file mode 100644
-index 0000000..04c83f6
+index 0000000..76beac0
 --- /dev/null
 +++ b/third_party/WebKit/Source/platform/fonts/opentype/OpenTypeMathData.cpp
 @@ -0,0 +1,314 @@
@@ -71,11 +71,11 @@ index 0000000..04c83f6
 +
 +namespace OpenType {
 +
-+//#if PLATFORM(COCOA)
-+//const FourCharCode MATHTag = 'MATH';
-+//#else
++#if OS(MACOSX)
++const FourCharCode MATHTag = 'MATH';
++#else
 +const uint32_t MATHTag = OT_MAKE_TAG('M', 'A', 'T', 'H');
-+//#endif
++#endif
 +
 +#pragma pack(1)
 +
